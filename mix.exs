@@ -39,7 +39,10 @@ defmodule Kulukin.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:coherence, "~> 0.3"},
-     {:canary, "~> 1.1.0"}
+     {:canary, "~> 1.1.0"},
+     {:arc_ecto, "~> 0.6.0"},
+     {:ex_aws, "~> 1.1"},
+     {:sweet_xml, "~> 0.6"}
    ]
   end
 
