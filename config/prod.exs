@@ -19,6 +19,15 @@ config :kulukin, Kulukin.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :coherence, Kulukin.Coherence.Mailer,
+  adapter: Swoosh.Adapters.Mailgun,
+  api_key: System.get_env("MAILGUN_API_KEY"),
+  domain: System.get_env("MAILGUN_DOMAIN")
+
+config :coherence,
+  email_from_name: System.get_env("KULUKIN_NAME"),
+  email_from_email: System.get_env("KULUKIN_EMAIL")
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
