@@ -19,7 +19,7 @@ defmodule Kulukin.Mixfile do
   def application do
     [mod: {Kulukin, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :coherence]]
   end
 
   # Specifies which paths to compile per environment.
