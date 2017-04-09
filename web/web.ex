@@ -36,6 +36,7 @@ defmodule Kulukin.Web do
 
       import Kulukin.Router.Helpers
       import Kulukin.Gettext
+      use Kulukin.HelperPlugs
     end
   end
 

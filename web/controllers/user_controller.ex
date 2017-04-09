@@ -1,7 +1,10 @@
 defmodule Kulukin.UserController do
   use Kulukin.Web, :controller
-
+  import Canary.Plugs
   alias Kulukin.User
+
+  plug :load_and_authorize_resource, model: User
+  plug :require_authorized
 
   def index(conn, _params) do
     users = Repo.all(User)
