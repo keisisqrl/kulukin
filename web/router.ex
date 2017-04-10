@@ -39,6 +39,7 @@ defmodule Kulukin.Router do
 
     get "/", PageController, :index
     resources "/users", UserController
+    resources "/containers", ContainerController
   end
 
   scope "/", Kulukin do

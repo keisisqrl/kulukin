@@ -1,0 +1,30 @@
+<h2>Listing containers</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>User</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for container <- @containers do %>
+    <tr>
+      <td><%= container.name %></td>
+      <td><%= container.location %></td>
+      <td><%= container.user_id %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: container_path(@conn, :show, container), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: container_path(@conn, :edit, container), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: container_path(@conn, :delete, container), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New container", to: container_path(@conn, :new) %>
