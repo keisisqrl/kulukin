@@ -8,5 +8,5 @@ Kulukin.User.changeset(%Kulukin.User{},
     password_confirmation: "opensesame",
     admin: true
   })
-|> Kulukin.Repo.Insert!
+|> Kulukin.Repo.insert!
 |> Coherence.ControllerHelpers.confirm!
