@@ -8,6 +8,8 @@ defmodule Kulukin.User do
     field :admin, :boolean, default: false
     coherence_schema()
 
+    has_many :containers, Kulukin.Container
+
     timestamps()
   end
 
