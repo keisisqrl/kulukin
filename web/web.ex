@@ -23,6 +23,7 @@ defmodule Kulukin.Web do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
+      alias Kulukin.Repo
     end
   end
 
@@ -37,6 +38,7 @@ defmodule Kulukin.Web do
       import Kulukin.Router.Helpers
       import Kulukin.Gettext
       use Kulukin.HelperPlugs
+      import Canary.Plugs
     end
   end
 

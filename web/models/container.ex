@@ -14,7 +14,9 @@ defmodule Kulukin.Container do
   """
   def changeset(struct, params \\ %{}) do
     struct
+    |> Repo.preload(:user)
     |> cast(params, [:name, :location])
+    |> put_assoc(:user, params[:user])
     |> validate_required([:name, :location])
   end
 end

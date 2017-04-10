@@ -1,6 +1,11 @@
 defmodule Kulukin.ContainerController do
   use Kulukin.Web, :controller
 
+  plug Coherence.Authentication.Session, [protected: true] when
+    not (action in [:index, :show])
+  plug :authorize_resource when action in [:edit, :update, :delete]
+  plug :require_authorized when action in [:edit, :update, :delete]
+
   alias Kulukin.Container
 
   def index(conn, _params) do
@@ -14,6 +19,8 @@ defmodule Kulukin.ContainerController do
   end
 
   def create(conn, %{"container" => container_params}) do
+    user = conn.assigns[:current_user]
+    container_params = Map.put_new(container_params, :user, user)
     changeset = Container.changeset(%Container{}, container_params)
 
     case Repo.insert(changeset) do
