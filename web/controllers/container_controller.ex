@@ -1,16 +1,14 @@
 defmodule Kulukin.ContainerController do
   use Kulukin.Web, :controller
-
-  plug Coherence.Authentication.Session, [protected: true] when
-    not (action in [:index, :show])
-  plug :authorize_resource when action in [:edit, :update, :delete]
-  plug :require_authorized when action in [:edit, :update, :delete]
-
   alias Kulukin.Container
 
+  plug Coherence.Authentication.Session, [protected: true] when
+    action in [:edit, :update, :delete]
+  plug :load_resource, model: Container, preload: :user
+  plug :authorize_resource, model: Container, only: [:edit, :update, :delete]
+
   def index(conn, _params) do
-    containers = Repo.all(Container)
-    render(conn, "index.html", containers: containers)
+    render(conn, "index.html")
   end
 
   def new(conn, _params) do
@@ -20,8 +18,7 @@ defmodule Kulukin.ContainerController do
 
   def create(conn, %{"container" => container_params}) do
     user = conn.assigns[:current_user]
-    container_params = Map.put_new(container_params, :user, user)
-    changeset = Container.changeset(%Container{}, container_params)
+    changeset = Container.changeset(%Container{user_id: user.id}, container_params)
 
     case Repo.insert(changeset) do
       {:ok, _container} ->
@@ -33,15 +30,13 @@ defmodule Kulukin.ContainerController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    container = Repo.get!(Container, id)
-    render(conn, "show.html", container: container)
+  def show(conn, %{"id" => _}) do
+    render(conn, "show.html")
   end
 
-  def edit(conn, %{"id" => id}) do
-    container = Repo.get!(Container, id)
-    changeset = Container.changeset(container)
-    render(conn, "edit.html", container: container, changeset: changeset)
+  def edit(conn, %{"id" => _}) do
+    changeset = Container.changeset(conn.assigns[:container])
+    render(conn, "edit.html", changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "container" => container_params}) do

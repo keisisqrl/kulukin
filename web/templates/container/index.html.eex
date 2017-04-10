@@ -15,7 +15,7 @@
     <tr>
       <td><%= container.name %></td>
       <td><%= container.location %></td>
-      <td><%= container.user_id %></td>
+      <td><%= container.user.name %></td>
 
       <td class="text-right">
         <%= link "Show", to: container_path(@conn, :show, container), class: "btn btn-default btn-xs" %>

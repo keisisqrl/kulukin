@@ -1,4 +1,6 @@
 defmodule Kulukin.HelperPlugs do
+  import Phoenix.Controller
+  import Plug.Conn
   defmacro __using__(_) do
 
     quote do
@@ -17,4 +19,10 @@ defmodule Kulukin.HelperPlugs do
 
   end
 
+  def unauthorized(conn, _) do
+    conn
+    |> put_flash(:error, "Not authorized")
+    |> redirect(to: "/")
+    |> halt
+  end
 end

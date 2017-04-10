@@ -27,6 +27,7 @@ defmodule Kulukin.Router do
   scope "/" do
     pipe_through :browser
     coherence_routes()
+    get "/login", Coherence.SessionController, :new
   end
 
   scope "/" do
