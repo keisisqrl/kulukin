@@ -1,8 +1,5 @@
-SELECT 'shell' as component,
-  'Kulukin' as title,
-  'A community-powered library for sharing items with friends, family, and neighbors.' as description,
-  'dark' as theme,
-  'Login' as menu_item
+SELECT 'dynamic' as component,
+  sqlpage.run_sql('shell.sql') as properties
 ;
 
 

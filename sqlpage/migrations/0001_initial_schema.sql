@@ -6,10 +6,10 @@ CREATE TABLE user (
   admin INTEGER NOT NULL DEFAULT 0
 );
 
-CREATE TABLE login_sessions (
+CREATE TABLE login_session (
   session_id TEXT PRIMARY KEY,
   user_id INTEGER REFERENCES user(id) ON DELETE CASCADE,
-  start_time INTEGER NOT NULL DEFAULT (unixepoch('now'))
+  start_time TEXT NOT NULL DEFAULT current_timestamp
 );
 
 CREATE TABLE item (
