@@ -1,7 +1,6 @@
 {
   "image": "mcr.microsoft.com/devcontainers/universal:2",
-  "features": {},
-  "onCreateCommand": {
-    "download and install SQLPage": "curl -L https://github.com/sqlpage/SQLPage/releases/download/v0.35.2/sqlpage-linux.tgz | tar -zxf - sqlpage.bin && mv sqlpage.bin /usr/local/bin/sqlpage"
+  "features": {
+    "ghcr.io/keisisqrl/dc-features/sqlpage:1": {}
   }
 }
