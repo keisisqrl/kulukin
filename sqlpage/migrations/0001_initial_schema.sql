@@ -3,14 +3,14 @@ CREATE TABLE user (
   username TEXT NOT NULL,
   password_hash TEXT NOT NULL,
   email TEXT NOT NULL,
-  admin INTEGER NOT NULL DEFAULT 0,
+  admin INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE TABLE login_sessions (
   session_id TEXT PRIMARY KEY,
   user_id INTEGER REFERENCES user(id) ON DELETE CASCADE,
-  start_time INTEGER NOT NULL DEFAULT (unixepoch('now')),
-)
+  start_time INTEGER NOT NULL DEFAULT (unixepoch('now'))
+);
 
 CREATE TABLE item (
   id INTEGER PRIMARY KEY,
