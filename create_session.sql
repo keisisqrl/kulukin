@@ -1,5 +1,5 @@
 SELECT 'authentication' as component,
-  'login.sql?badlogin=true' as link,
+  'login.sql?bad_login=true' as link,
   (SELECT password_hash from user where username = :username) as password_hash,
   :password as password;
 

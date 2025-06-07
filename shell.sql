@@ -8,7 +8,7 @@ SELECT 'shell' as component,
   'Kulukin' as title,
   'A community-powered library for sharing items with friends, family, and neighbors.' as description,
   'dark' as theme,
-  (CASE WHEN $session_user IS NULL THEN 
+  (CASE WHEN $session_username IS NULL THEN 
     json_object('title', 'Login',
                 'link', '/login.sql')
     ELSE

@@ -2,18 +2,10 @@ SELECT 'dynamic' as component,
   sqlpage.run_sql('shell.sql') as properties
 ;
 
-SELECT 'alert' as component,
-      'Error' as title,
-      'lock-exclamation' as icon,
-      'red' as color,
-      TRUE as dismissible,
-      'Invalid username or password.' as description
-WHERE $bad_login IS NOT NULL;
-
 SELECT 'form' as component,
-  'Log In' as title,
+  'Register new user' as title,
   'POST' as method,
-  '/create_session.sql' as action;
+  '/create_user.sql' as action;
 SELECT 
   'username' as name,
   'Username' as label,
@@ -23,4 +15,9 @@ SELECT
   'password' as name,
   'Password' as label,
   'password' as type,
+  TRUE as required;
+SELECT
+  'email' as name,
+  'Email' as label,
+  'email' as type,
   TRUE as required;
