@@ -24,3 +24,10 @@ SELECT
   'Password' as label,
   'password' as type,
   TRUE as required;
+
+SELECT 'text' as component,
+  TRUE as center,
+  'Need an account? ' as contents;
+SELECT 
+  'Click here to register' as contents,
+  'register.sql' as link;
